@@ -44,7 +44,7 @@
 	<div class="button">
 		<button @click="simpan"> Simpan</button>
 	</div>
-		<userinfo v-bind:paramsInfo="paramsInfo" />
+		<userinfo />
   </div>
 </template>
 
@@ -59,11 +59,11 @@ export default {
   },
   data() {
 	return {
-		nama : null,
-		biodata : null,
-		checkedNames : [],
-		picked : null,
-		selected : [],
+		nama : this.$store.state.InfoUser.nama || null,
+		biodata : this.$store.state.InfoUser.biodata || null,
+		checkedNames : this.$store.state.InfoUser.hobbies || [],
+		picked : this.$store.state.InfoUser.kelamin || null,
+		selected : this.$store.state.InfoUser.aplikasis || [],
 		paramsInfo : {}
 	}
   },
@@ -77,6 +77,8 @@ export default {
 			kelamin: this.picked,
 			aplikasis: this.selected
 		}
+
+		this.$store.commit('SaveInfoUser', this.paramsInfo)
 	}
 }
 }

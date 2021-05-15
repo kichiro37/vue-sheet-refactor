@@ -22,9 +22,11 @@
 
 export default {
   name: 'userinfo',
-  props: {
-		paramsInfo: Object
-  }
+	computed: {
+	paramsInfo() {
+		return this.$store.state.InfoUser
+	}
+}
 }
 </script>
 
