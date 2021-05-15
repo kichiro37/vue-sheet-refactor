@@ -44,32 +44,18 @@
 	<div class="button">
 		<button @click="simpan"> Simpan</button>
 	</div>
-	<div class="output">
-		<div>
-			Nama : {{ nama }}
-		</div>
-		<div>
-			Biodata : {{ biodata }}
-		</div>
-		<div>
-			Hobby : {{ checkedNames }}
-		</div>
-		<div>
-			Kelamin : {{ picked }}
-		</div>
-		<div>
-			Aplikasi : {{ selected }}
-		</div>
-	</div>
+		<userinfo v-bind:paramsInfo="paramsInfo" />
   </div>
 </template>
 
 <script>
 
+import userinfo from '../components/UserInfo.vue'
+
 export default {
   name: 'Edit',
   components: {
-
+		userinfo
   },
   data() {
 	return {
@@ -77,12 +63,20 @@ export default {
 		biodata : null,
 		checkedNames : [],
 		picked : null,
-		selected : []
+		selected : [],
+		paramsInfo : {}
 	}
   },
   methods: {
-	simpan(){
-	alert(`Data ${this.nama} Tersimpan`)
+	simpan() {
+		alert(`Data ${this.nama} Tersimpan`)
+		this.paramsInfo = {
+			nama: this.nama,
+			biodata: this.biodata,
+			hobbies: this.checkedNames,
+			kelamin: this.picked,
+			aplikasis: this.selected
+		}
 	}
 }
 }
