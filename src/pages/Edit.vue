@@ -77,7 +77,6 @@ export default {
 			kelamin: this.picked,
 			aplikasis: this.selected
 		}
-
 		this.$store.commit('SaveInfoUser', this.paramsInfo)
 	}
 }

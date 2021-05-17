@@ -60,6 +60,21 @@ const store = new Vuex.Store({
 					reject(err)
 				})
 			})
+		},
+		AddEmployee ({state}, employee) {
+			console.log('AddEmployee 1 state', state)
+			console.log('AddEmployee 0', employee)
+			return new Promise ((resolve, reject) => {
+				axios.post('/users', employee)
+					.then(resp => {
+						console.log('AddEmployee 1T', resp)
+						resolve(resp.data)
+					})
+					.catch(err => {
+						console.log('AddEmployee 1F', err)
+						reject(err)
+					})
+			})
 		}
 	}
 })
